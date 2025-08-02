@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customer Feedback Form</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div class="container">
+    <header class="header-box">
+        <img src="images/logo.png" alt="Company Logo" class="logo" />
+        <h1 class="main-heading">
+          Customer Feedback Questionnaire<br />
+          <span class="sub-heading">Condition Monitoring Implementation</span>
+        </h1>
+      </header>
+
+    <form id="feedback-form" method="POST" action="http://localhost:5000/submit">
+      <!-- General Info -->
+      <fieldset>
+        <legend>General Information</legend>
+        <label>Company Name: <input type="text" name="companyName" required></label>
+        <label>Plant Location: <input type="text" name="plantLocation" required></label>
+        <label>Date: <input type="date" name="date" required></label>
+        <label>Contact Person Name: <input type="text" name="contactPerson" required></label>
+        <label>Contact Person Number: <input type="text" name="contactPersonnumber" required></label>
+        <label>Designation: <input type="text" name="designation" required></label>
+        <label for="email">Your Email:</label><input type="email" id="email" name="email" required>
+
+      </fieldset>
+
+      <!-- Section A -->
+      <fieldset>
+        <legend>Section A: Technical Evaluation</legend>
+
+        <label>How is the Installation Quality:
+          <div class="rating">
+            <input type="radio" id="star5" name="installationQuality" value="5"><label for="star5">★</label>
+            <input type="radio" id="star4" name="installationQuality" value="4"><label for="star4">★</label>
+            <input type="radio" id="star3" name="installationQuality" value="3"><label for="star3">★</label>
+            <input type="radio" id="star2" name="installationQuality" value="2"><label for="star2">★</label>
+            <input type="radio" id="star1" name="installationQuality" value="1"><label for="star1">★</label>
+          </div>
+        </label>
+
+        <label>Is the system capturing the parameters accurately?
+          <select name="accurateParameters" id="accurateParameters" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <div id="parameterIssueDiv" class="hidden nested">
+          <label>If No, please specify the issue:
+            <input type="text" name="parameterIssue">
+          </label>
+        </div>
+
+        <label>How is the Data transmission reliability:
+          <select name="dataReliability" required>
+            <option value="" disabled selected>Select</option>
+            <option>Very Reliable</option>
+            <option>Occasionally Dropped</option>
+            <option>Frequently Interrupted</option>
+          </select>
+        </label>
+
+        <label>Are the Sensor installation and cabling safe?
+          <select name="safeInstallation" id="safeInstallation" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <div id="installationIssueDiv" class="hidden nested">
+          <label>If No, please specify the issue:
+            <input type="text" name="installationIssue">
+          </label>
+        </div>
+
+        <label>Is there any repeated technical issue?
+          <select name="technicalIssues" id="technicalIssues" required>
+            <option value="" disabled selected>Select</option>
+            <option value="No">No</option>
+            <option value="Yes">Yes</option>
+          </select>
+        </label>
+        <div id="technicalIssueDetailsDiv" class="hidden nested">
+          <label>If Yes, please specify the issue:
+            <input type="text" name="technicalIssueDetails">
+          </label>
+        </div>
+
+        <label>What is the System Integration Status:
+          <select name="systemIntegration" required>
+            <option value="" disabled selected>Select</option>
+            <option>Fully Integrated</option>
+            <option>Partially Integrated</option>
+            <option>Not Integrated</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <!-- Section B -->
+      <fieldset>
+        <legend>Section B: Dashboard & Visualization</legend>
+
+        <label>Is the Dashboard easy to use:
+          <select name="dashboardEase" required>
+            <option value="" disabled selected>Select</option>
+            <option>Very Easy to Use</option>
+            <option>Moderately Easy</option>
+            <option>Complex</option>
+            <option>Difficult to Navigate</option>
+          </select>
+        </label>
+
+        <label>Are relevant KPIs and insights visible?
+          <select name="dashboardInsights" id="dashboardInsights" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="Partially">Partially</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <div id="missingKPIsDiv" class="hidden nested">
+          <label>If not yes, what is missing?
+            <input type="text" name="missingKPIs">
+          </label>
+        </div>
+
+        <label>Usefulness of trend charts:
+          <select name="chartUsefulness" required>
+            <option value="" disabled selected>Select</option>
+            <option>Very Useful</option>
+            <option>Somewhat Useful</option>
+            <option>Not Useful</option>
+          </select>
+        </label>
+
+        <label>Is the alert system functioning?
+          <select name="alertSystem" id="alertSystem" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+        </label>
+        <div id="alertIssueDiv" class="hidden nested">
+          <label>If needs improvement, please describe:
+            <input type="text" name="alertIssue">
+          </label>
+        </div>
+
+        <label>Dashboard loading speed:
+          <select name="dashboardSpeed" required>
+            <option value="" disabled selected>Select</option>
+            <option>Very Satisfied</option>
+            <option>Acceptable</option>
+            <option>Needs Improvement</option>
+          </select>
+        </label>
+
+        <label>Can you export/share reports?
+          <select name="reportExport" required>
+            <option value="" disabled selected>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Not Sure</option>
+          </select>
+        </label>
+
+        <label>Suggestions to improve dashboard:
+          <textarea name="dashboardSuggestions"></textarea>
+        </label>
+      </fieldset>
+
+      <!-- Section C -->
+      <fieldset>
+        <legend>Section C: Process & Impact</legend>
+
+        <label>Has downtime/failures reduced?
+          <select name="downtimeReduction" required>
+            <option value="" disabled selected>Select</option>
+            <option>Yes</option>
+            <option>To Some Extent</option>
+            <option>Not Yet</option>
+          </select>
+        </label>
+
+        <label>Any equipment improvements noticed?
+          <textarea name="equipmentImprovement"></textarea>
+        </label>
+
+        <label>Team action frequency:
+          <select name="teamAction" required>
+            <option value="" disabled selected>Select</option>
+            <option>Frequently</option>
+            <option>Occasionally</option>
+            <option>Rarely</option>
+          </select>
+        </label>
+
+        <label>Is it helping in maintenance planning?
+          <select name="maintenancePlanning" required>
+            <option value="" disabled selected>Select</option>
+            <option>Yes</option>
+            <option>Partially</option>
+            <option>No</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <!-- Section D -->
+      <fieldset>
+        <legend>Section D: Support & Engagement</legend>
+
+        <label>How would you rate the Team support:
+          <select name="teamSupport" required>
+            <option value="" disabled selected>Select</option>
+            <option>Excellent</option>
+            <option>Good</option>
+            <option>Average</option>
+            <option>Poor</option>
+          </select>
+        </label>
+
+        <label>Was the training given sufficient?
+          <select name="trainingSufficient" id="trainingSufficient" required>
+            <option value="" disabled selected>Select</option>
+            <option value="Yes">Yes</option>
+            <option value="No">No</option>
+          </select>
+        </label>
+        <div id="trainingNeedsDiv" class="hidden nested">
+          <label>If No, what more would you need?
+            <input type="text" name="trainingNeeds">
+          </label>
+        </div>
+
+        <label>Would you like any periodic refreshers?
+          <select name="refreshersNeeded" required>
+            <option value="" disabled selected>Select</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Maybe</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <!-- Section E -->
+      <fieldset>
+        <legend>Section E: Suggestions</legend>
+
+        <label>Current challenges we can help with:
+          <textarea name="currentChallenges"></textarea>
+        </label>
+
+        <label>Any additional feedback:
+          <textarea name="additionalFeedback"></textarea>
+        </label>
+      </fieldset>
+
+      <button type="submit">Submit Feedback</button>
+    </form>
+  </div>
+
+  <script>
+    function toggleField(id, show) {
+      document.getElementById(id).classList.toggle('hidden', !show);
+    }
+
+    document.getElementById('accurateParameters').addEventListener('change', function () {
+      toggleField('parameterIssueDiv', this.value === 'No');
+    });
+
+    document.getElementById('safeInstallation').addEventListener('change', function () {
+      toggleField('installationIssueDiv', this.value === 'No');
+    });
+
+    document.getElementById('technicalIssues').addEventListener('change', function () {
+      toggleField('technicalIssueDetailsDiv', this.value === 'Yes');
+    });
+
+    document.getElementById('dashboardInsights').addEventListener('change', function () {
+      toggleField('missingKPIsDiv', this.value !== 'Yes');
+    });
+
+    document.getElementById('alertSystem').addEventListener('change', function () {
+      toggleField('alertIssueDiv', this.value === 'Needs Improvement');
+    });
+
+    document.getElementById('trainingSufficient').addEventListener('change', function () {
+      toggleField('trainingNeedsDiv', this.value === 'No');
+    });
+  </script>
+
+<script>
+  const form = document.getElementById('feedback-form');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // Stop default form submission
+
+    const formData = new FormData(form);
+    const data = {};
+
+    // Convert formData to plain object
+    formData.forEach((value, key) => {
+      data[key] = value;
+    });
+
+    console.log("Form Data Submitted:", data); // ✅ Add this line for debugging
+
+    try {
+      const response = await fetch('http://localhost:5000/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+      alert(result.message || 'Form submitted successfully!');
+      form.reset();
+    } catch (err) {
+      alert('Error submitting form. Please check the backend.');
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
